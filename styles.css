@@ -1,0 +1,137 @@
+/* Mantiene la estructura general */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Evita desplazamiento no deseado */
+}
+
+/* Contenedor principal */
+.padre {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ajuste del fondo */
+.cont {
+    position: relative; /* Se asegura que ::before se posicione correctamente */
+    width: 100%;
+    height: 100vh; /* Ocupa toda la pantalla */
+    background-image: url('./assets/peliculas-rapidos-y-furiosos-poster.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Capa rosada con opacidad */
+.cont::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 182, 193, 0.6); /* Ajusta la opacidad */
+    z-index: 1;
+}
+
+/* Mantiene el contenido sobre la capa rosada */
+.ellie, .contenedor {
+    position: relative;
+    z-index: 2;
+}
+
+/* Ajuste del título */
+.ellie {
+    color: rgb(248, 114, 136);
+    text-align: center;
+    font-size: 2rem;
+}
+
+/* Hacer el contenedor adaptable */
+.contenedor {
+    height: 600px;
+    width: 90vw;
+    max-width: 700px;
+    background-color: pink;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+/* Scroll personalizado */
+.contenedor::-webkit-scrollbar {
+    width: 8px;
+}
+
+.contenedor::-webkit-scrollbar-track {
+    background: #ffe4e1;
+    border-radius: 5px;
+}
+
+.contenedor::-webkit-scrollbar-thumb {
+    background: #ff69b4;
+    border-radius: 5px;
+}
+
+.contenedor::-webkit-scrollbar-thumb:hover {
+    background: #ff1493;
+}
+
+/* Ajustes para mejor lectura */
+.title {
+    margin-left: 10px;
+    text-align: justify;
+    font-size: 1rem;
+}
+
+/* Ajuste del título */
+.referencia {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: #ff1493;
+}
+
+/* 🔹 Estilos Responsive 🔹 */
+@media (max-width: 768px) {
+    .ellie {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .contenedor {
+        height: 500px;
+        width: 95vw;
+    }
+
+    .title {
+        font-size: 0.9rem;
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ellie {
+        font-size: 1.2rem;
+    }
+
+    .contenedor {
+        height: 450px;
+    }
+
+    .title {
+        font-size: 0.85rem;
+        margin-left: 3px;
+    }
+}
